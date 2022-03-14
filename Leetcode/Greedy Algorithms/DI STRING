@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<int> diStringMatch(string s) {
+        vector<int> ans;
+        int l= s.length();
+        int m=0;
+        int x=l;
+        if(s[0]=='D'){
+            ans.push_back(l);
+            x--;
+        }
+        if(s[0]=='I'){
+            ans.push_back(0);
+            m++;
+        }
+        
+        int count=0;
+        int i=1;
+        while(count!=l){
+            if(s[i]=='I'){
+                ans.push_back(m);
+                m++;                
+            }
+            
+           else if(s[i]=='D' ){
+                ans.push_back(x);
+               x--;
+            }              
+            
+            i++;
+            count++;
+        }
+        
+        if(s[l-1]=='D'){
+            ans.push_back(ans[l-1]-1);
+        }
+        if(s[l-1]=='I'){
+            ans.push_back(ans[l-1]+1);
+        }
+        
+        return ans;
+    }
+};
